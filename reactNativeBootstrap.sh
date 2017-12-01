@@ -15,7 +15,7 @@ mkdir App/containers &&
 mkdir App/utils && 
 mkdir App/assets && 
 mkdir App/assets/img &&
-mv App.js app &&
+mv App.js App/App.js &&
 echo "import App from './App';" > App/index.js &&
 echo  >> App/index.js;
 echo "export default App;" >> App/index.js;
