@@ -61,7 +61,7 @@ read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add react-navigation
-  cp $DIR/templates/reouter.js App/reouter.js
+  cp $DIR/templates/router.js App/router.js
 fi
 
 echo "Deseja instalar o React Native Firebase [Y/n]?"
