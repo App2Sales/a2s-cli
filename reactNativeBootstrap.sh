@@ -20,10 +20,63 @@ echo "import App from './App';" > App/index.js &&
 echo  >> App/index.js;
 echo "export default App;" >> App/index.js;
 echo "Deseja instalar o redux [Y/n]?"
+
+echo "const images = {" > App/config/images.js
+echo "// place yours custons images here" >> App/config/images.js
+echo "};" >> App/config/images.js
+echo  >> App/config/images.js
+echo "export default images;" >> App/config/images.js
+
+echo "const colors = {" > App/config/colors.js
+echo "// place yours custons colors here" >> App/config/colors.js
+echo "};" >> App/config/colors.js
+echo  >> App/config/colors.js
+echo "export default colors;" >> App/config/colors.js
+
+echo "import images from './images';" > App/config/index.js
+echo "import colors from './colors';" >> App/config/index.js
+echo  >> App/config/index.js
+echo "export { images, colors };" >> App/config/index.js
+
+echo "// import yours components here" > App/components/index.js
+echo  >> App/components/index.js
+echo "export {" >> App/components/index.js
+echo "// place yours components here" >> App/components/index.js
+echo " };" >> App/components/index.js
+
+echo "// import yours screens here" > App/screens/index.js
+echo  >> App/screens/index.js
+echo "export {" >> App/screens/index.js
+echo "// place yours screens here" >> App/screens/index.js
+echo " };" >> App/screens/index.js
+
+echo "// import yours containers here" > App/containers/index.js
+echo  >> App/containers/index.js
+echo "export {" >> App/containers/index.js
+echo "// place yours containers here" >> App/containers/index.js
+echo " };" >> App/containers/index.js
+
+echo "// import yours utils here" > App/utils/index.js
+echo  >> App/utils/index.js
+echo "export {" >> App/utils/index.js
+echo "// place yours utils here" >> App/utils/index.js
+echo " };" >> App/utils/index.js
+
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add redux react-redux redux-logger 
+  mkdir App/redux
+  echo "import { combineReducers } from 'redux';" > App/redux/index.js
+  echo  >> App/redux/index.js
+  echo "export default combineReducers({" >> App/redux/index.js
+  echo "// place yours reducers here" >> App/redux/index.js
+  echo " });" >> App/redux/index.js
+  echo  >> App/redux/index.js
+  echo "export {" >> App/redux/index.js
+  echo "// place yours actions here" >> App/redux/index.js
+  echo " };" >> App/redux/index.js
+
   echo "Deseja instalar o reduxsauce [Y/n]?"
     read p
     p=${p:-"y"}
