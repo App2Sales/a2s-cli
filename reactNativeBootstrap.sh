@@ -104,6 +104,54 @@ read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add react-navigation
+  echo "import { StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';" > App/router.js
+  echo "import {" >> App/router.js
+  echo "// import yours screens" >> App/router.js
+  echo "} from './screens';" >> App/router.js
+  echo >> App/router.js
+  echo "const MainTabNavigator = TabNavigator(" >> App/router.js
+  echo "  {" >> App/router.js
+  echo "// place yours tabs here" >> App/router.js
+  echo "// sample: " >> App/router.js
+  echo "// HOME: { screen:HomeScreen }" >> App/router.js
+  echo "  }," >> App/router.js
+  echo "  {" >> App/router.js
+  echo "    tabBarComponent: TabBarTop," >> App/router.js
+  echo "    tabBarPosition: 'bottom'," >> App/router.js
+  echo "    tabBarOptions: {" >> App/router.js
+  echo "      showIcon: true," >> App/router.js
+  echo "      showLabel: true," >> App/router.js
+  echo "      activeTintColor: '#FFCC29', // TODO: change to correct color" >> App/router.js
+  echo "      inactiveTintColor: '#A7A7A7', // TODO: change to correct color" >> App/router.js
+  echo "      upperCaseLabel: false," >> App/router.js
+  echo "      tabStyle: {" >> App/router.js
+  echo "        elevation: 10" >> App/router.js
+  echo "      }," >> App/router.js
+  echo "      labelStyle: {" >> App/router.js
+  echo "        width: '100%'," >> App/router.js
+  echo "        fontSize: 10" >> App/router.js
+  echo "      }," >> App/router.js
+  echo "      style: {" >> App/router.js
+  echo "        backgroundColor: '#222222', // TODO: change to correct color" >> App/router.js
+  echo "        borderTopWidth: 1," >> App/router.js
+  echo "        borderTopColor: '#00000011'" >> App/router.js
+  echo "      }," >> App/router.js
+  echo "      indicatorStyle: {" >> App/router.js
+  echo "        borderColor: '#FFCC29', // TODO: change to correct color" >> App/router.js
+  echo "        borderWidth: 2," >> App/router.js
+  echo "        top: 0," >> App/router.js
+  echo "        position: 'absolute'" >> App/router.js
+  echo "      }" >> App/router.js
+  echo "    }" >> App/router.js
+  echo "  }" >> App/router.js
+  echo ");" >> App/router.js
+  echo  >> App/router.js
+  echo "const Router = StackNavigator({" >> App/router.js
+  echo "  TABS: { screen: MainTabNavigator }" >> App/router.js
+  echo "});" >> App/router.js
+  echo  >> App/router.js
+  echo "export default Router;" >> App/router.js
+
 fi
 
 echo "Deseja instalar o React Native Firebase [Y/n]?"
