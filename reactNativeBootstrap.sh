@@ -169,5 +169,12 @@ p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add realm
   react-native link realm
-  echo "Para concluir a instalação siga as instruções em: https://rnfirebase.io/docs/v3.0.*/installation/initial-setup"
+fi
+
+echo "Deseja instalar o React Native Vector Icons [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  yarn add react-native-vector-icons
+  react-native link react-native-vector-icons
 fi
