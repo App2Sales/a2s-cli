@@ -17,15 +17,15 @@ mkdir App/utils &&
 mkdir App/assets && 
 mkdir App/assets/img &&
 mv App.js App/App.js &&
-mv $DIR/templates/index.js App/index.js
-mv $DIR/templates/config/images.js App/config/images.js
-mv $DIR/templates/config/colors.js App/config/colors.js
-mv $DIR/templates/config/index.js App/config/index.js
-mv $DIR/templates/components/index.js App/components/index.js
-mv $DIR/templates/config/index.js App/config/index.js
-mv $DIR/templates/containers/index.js App/containers/index.js
-mv $DIR/templates/screens/index.js App/screens/index.js
-mv $DIR/templates/utils/index.js App/utils/index.js
+cp $DIR/templates/index.js App/index.js
+cp $DIR/templates/config/images.js App/config/images.js
+cp $DIR/templates/config/colors.js App/config/colors.js
+cp $DIR/templates/config/index.js App/config/index.js
+cp $DIR/templates/components/index.js App/components/index.js
+cp $DIR/templates/config/index.js App/config/index.js
+cp $DIR/templates/containers/index.js App/containers/index.js
+cp $DIR/templates/screens/index.js App/screens/index.js
+cp $DIR/templates/utils/index.js App/utils/index.js
 
 echo "Deseja instalar o redux [Y/n]?"
 read p
@@ -33,7 +33,7 @@ p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add redux react-redux redux-logger 
   mkdir App/redux
-  mv $DIR/templates/redux/index.js App/redux/index.js
+  cp $DIR/templates/redux/index.js App/redux/index.js
   echo "Deseja instalar o reduxsauce [Y/n]?"
     read p
     p=${p:-"y"}
@@ -61,7 +61,7 @@ read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add react-navigation
-  mv $DIR/templates/reouter.js App/reouter.js
+  cp $DIR/templates/reouter.js App/reouter.js
 fi
 
 echo "Deseja instalar o React Native Firebase [Y/n]?"
