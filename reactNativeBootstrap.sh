@@ -19,46 +19,53 @@ mv App.js app &&
 echo "import App from './App';" > App/index.js &&
 echo  >> App/index.js;
 echo "export default App;" >> App/index.js;
-echo "Deseja instalar o redux (y para continuar)?"
+echo "Deseja instalar o redux [Y/n]?"
 read p
-if [ "$p" == "y" ]; then
+p=${p:-"y"}
+if [ "$p" == "y" || "$p" == "Y" ]; then
   yarn add redux react-redux redux-logger 
-  echo "Deseja instalar o reduxsauce (y para continuar)?"
+  echo "Deseja instalar o reduxsauce [Y/n]?"
     read p
-    if [ "$p" == "y" ]; then
+    p=${p:-"y"}
+    if [ "$p" == "y" || "$p" == "Y" ]; then
       yarn add reduxsauce seamless-immutable
     fi
 fi
 
-echo "Deseja instalar o moment (y para continuar)?"
+echo "Deseja instalar o moment [Y/n]?"
 read p
-if [ "$p" == "y" ]; then
+p=${p:-"y"}
+if [ "$p" == "y" || "$p" == "Y" ]; then
   yarn add moment
 fi
 
-echo "Deseja instalar o lodash (y para continuar)?"
+echo "Deseja instalar o lodash [Y/n]?"
 read p
-if [ "$p" == "y" ]; then
+p=${p:-"y"}
+if [ "$p" == "y" || "$p" == "Y" ]; then
   yarn add lodash
 fi
 
-echo "Deseja instalar o React Navigation (y para continuar)?"
+echo "Deseja instalar o React Navigation [Y/n]?"
 read p
-if [ "$p" == "y" ]; then
+p=${p:-"y"}
+if [ "$p" == "y" || "$p" == "Y" ]; then
   yarn add react-navigation
 fi
 
-echo "Deseja instalar o React Native Firebase (y para continuar)?"
+echo "Deseja instalar o React Native Firebase [Y/n]?"
 read p
-if [ "$p" == "y" ]; then
+p=${p:-"y"}
+if [ "$p" == "y" || "$p" == "Y" ]; then
   yarn add react-native-firebase
   react-native link react-native-firebase
   echo "Para concluir a instalação siga as instruções em: https://rnfirebase.io/docs/v3.0.*/installation/initial-setup"
 fi
 
-echo "Deseja instalar o Realm (y para continuar)?"
+echo "Deseja instalar o Realm [Y/n]?"
 read p
-if [ "$p" == "y" ]; then
+p=${p:-"y"}
+if [ "$p" == "y" || "$p" == "Y" ]; then
   yarn add realm
   react-native link realm
   echo "Para concluir a instalação siga as instruções em: https://rnfirebase.io/docs/v3.0.*/installation/initial-setup"
