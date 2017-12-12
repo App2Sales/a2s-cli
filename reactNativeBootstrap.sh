@@ -49,6 +49,13 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add moment
 fi
 
+echo "Deseja instalar o lazy.js [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  yarn add lazy.js
+fi
+
 echo "Deseja instalar o lodash [Y/n]?"
 read p
 p=${p:-"y"}
