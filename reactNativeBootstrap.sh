@@ -95,3 +95,12 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   yarn add react-native-vector-icons
   react-native link react-native-vector-icons
 fi
+
+echo "Deseja adicionar ESLint no projeto? [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native
+cp $DIR/templates/.eslintrc.json .
+cp $DIR/templates/.editorconfig .
+fi
