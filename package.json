@@ -8,7 +8,7 @@
     "start": "bash reactNativeBootstrap.sh $*"
   },
   "bin": {
-    "rnbootstrap": "npm start"
+    "rnbootstrap": "reactNativeBootstrap.sh $*"
   },
   "repository": {
     "type": "git",
