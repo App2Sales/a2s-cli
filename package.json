@@ -1,6 +1,6 @@
 {
   "name": "rnbootstrap",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Script para criar novos projetos em React-Native.",
   "main": "reactNativeBootstrap.sh",
   "scripts": {
