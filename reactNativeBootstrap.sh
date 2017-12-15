@@ -23,7 +23,6 @@ cp -R $DIR/templates/components App/components
 cp -R $DIR/templates/containers App/containers
 cp -R $DIR/templates/config App/config
 cp -R $DIR/templates/screens App/screens
-cp -R $DIR/templates/screens/HomeScreen App/screens/HomeScreen
 cp -R $DIR/templates/utils App/utils
 cp $DIR/templates/index.js App/index.js
 echo "Vamos adicionar alguns complementos? Veja a seguir o que deseja instalar."
