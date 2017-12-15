@@ -1,0 +1,24 @@
+{
+  "name": "rnbootstrap",
+  "version": "1.0.0",
+  "description": "Script para criar novos projetos em React-Native.",
+  "main": "reactNativeBootstrap.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bash reactNativeBootstrap.sh $*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/App2Sales/bootstrapreactnative.git"
+  },
+  "keywords": [
+    "Bootstrap",
+    "react-native"
+  ],
+  "author": "jkdrangel, marumaia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/App2Sales/bootstrapreactnative/issues"
+  },
+  "homepage": "https://github.com/App2Sales/bootstrapreactnative#readme"
+}
