@@ -5,9 +5,11 @@ if [ $# -lt 1 ]; then
    echo "Passe o nome do seu projeto como parâmetro!"
    exit 1
 fi
+echo "Criando projeto... Aguarde alguns instantes."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 react-native init $1 &&
 cd $1 &&
+echo "Criando diretórios... Isso será bem rápido."
 mkdir App &&  
 mkdir App/components && 
 mkdir App/config && 
@@ -17,15 +19,14 @@ mkdir App/utils &&
 mkdir App/assets && 
 mkdir App/assets/img &&
 mv App.js App/App.js &&
+cp -R $DIR/templates/components App/components
+cp -R $DIR/templates/containers App/containers
+cp -R $DIR/templates/config App/config
+cp -R $DIR/templates/screens App/screens
+cp -R $DIR/templates/screens/HomeScreen App/screens/HomeScreen
+cp -R $DIR/templates/utils App/utils
 cp $DIR/templates/index.js App/index.js
-cp $DIR/templates/config/images.js App/config/images.js
-cp $DIR/templates/config/colors.js App/config/colors.js
-cp $DIR/templates/config/index.js App/config/index.js
-cp $DIR/templates/components/index.js App/components/index.js
-cp $DIR/templates/config/index.js App/config/index.js
-cp $DIR/templates/containers/index.js App/containers/index.js
-cp $DIR/templates/screens/index.js App/screens/index.js
-cp $DIR/templates/utils/index.js App/utils/index.js
+echo "Vamos adicionar alguns complementos? Veja a seguir o que deseja instalar."
 
 echo "Deseja instalar o redux [Y/n]?"
 read p
@@ -104,3 +105,14 @@ yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import esl
 cp $DIR/templates/.eslintrc.json .
 cp $DIR/templates/.editorconfig .
 fi
+
+echo "Deseja instalar o React Native Smart Splash Screen [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  yarn add react-native-smart-splash-screen
+  react-native link react-native-smart-splash-screen
+  echo "Para concluir a instalação siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
+fi
+
+echo "Projeto criado e configurado com sucesso! Happy Coding!"
