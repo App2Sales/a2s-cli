@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "bash reactNativeBootstrap.sh $*"
   },
+  "bin": {
+    "rnbootstrap": "bash reactNativeBootstrap.sh $*"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/App2Sales/bootstrapreactnative.git"
