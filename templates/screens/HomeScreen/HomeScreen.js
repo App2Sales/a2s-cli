@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import styles from './styles.js';
+import styles from './style';
 
 // create a component
 class HomeScreen extends Component {
@@ -14,5 +14,5 @@ class HomeScreen extends Component {
     }
 }
 
-//make this component available to the app
+// make this component available to the app
 export default HomeScreen;
