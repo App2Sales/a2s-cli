@@ -2,6 +2,6 @@
 import HomeScreen from './HomeScreen';
 
 export {
-  // place yours screens here
-  HomeScreen
+    // place yours screens here
+    HomeScreen
 };

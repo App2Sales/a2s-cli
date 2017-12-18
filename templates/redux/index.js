@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-  // place yours reducers here
+    // place yours reducers here
 });
 
 export {
-  // place yours actions here
+    // place yours actions here
 };
