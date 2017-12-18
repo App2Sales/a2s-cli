@@ -114,4 +114,11 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   echo "Para concluir a instalação siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
 fi
 
+echo "Deseja instalar o React Native Keyboard Aware ScrollView [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  yarn add react-native-keyboard-aware-scroll-view
+fi
+
 echo "Projeto criado e configurado com sucesso! Happy Coding!"
