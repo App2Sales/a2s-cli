@@ -27,7 +27,7 @@ cp -R $DIR/templates/screens App
 cp -R $DIR/templates/utils App
 cp $DIR/templates/index.js App/index.js
 
-yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native &
+nohup yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native &
 
 cp $DIR/templates/.eslintrc.json .
 cp $DIR/templates/.editorconfig .
@@ -106,6 +106,7 @@ read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-smart-splash-screen"
+  cp -R $DIR/templates/res android/app/src/main
   echo "Para concluir a instalação siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
 fi
 
