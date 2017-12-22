@@ -116,6 +116,13 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-keyboard-aware-scroll-view"
 fi
 
+echo "Deseja instalar o React Native Global Props [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  adds="${adds} react-native-global-props"
+fi
+
 yarn add $adds
 react-native link
 echo "Projeto criado e configurado com sucesso! Happy Coding!"
