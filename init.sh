@@ -13,7 +13,6 @@ cd $1
 sed -i "/\"scripts\": {/a\    \"postinstall\": \"rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit\"," package.json
 sed -i "/\"scripts\": {/a\    \"prepush\": \"yarn run lint\"," package.json
 sed -i "/\"scripts\": {/a\    \"lint\": \"eslint app/\"," package.json
-nohup yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native husky &
 echo "Criando diretórios... Isso será bem rápido."
 mkdir App
 mkdir App/components 
@@ -109,6 +108,7 @@ cp -R $DIR/templates/res android/app/src/main
 adds="${adds} react-navigation"
 cp $DIR/templates/router.js App/router.js
 adds="${adds} react-native-global-props"
+yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native husky
 yarn add $adds
 react-native link
 echo "Para concluir a instalação do React Native Smart Splash Screen siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
