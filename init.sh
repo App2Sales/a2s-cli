@@ -20,7 +20,8 @@ mkdir App/containers
 mkdir App/utils 
 mkdir App/assets
 mkdir App/assets/img
-mv App.js App/App.js
+rm App.js
+cp $DIR/templates/App.js App/App.js
 cp -R $DIR/templates/components App
 cp -R $DIR/templates/containers App
 cp -R $DIR/templates/config App
@@ -71,14 +72,6 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} lodash"
 fi
 
-echo "Deseja instalar o React Navigation [Y/n]?"
-read p
-p=${p:-"y"}
-if [ "$p" == "y" -o "$p" == "Y" ]; then
-  adds="${adds} react-navigation"
-  cp $DIR/templates/router.js App/router.js
-fi
-
 echo "Deseja instalar o React Native Firebase [Y/n]?"
 read p
 p=${p:-"y"}
@@ -101,15 +94,6 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-vector-icons"
 fi
 
-echo "Deseja instalar o React Native Smart Splash Screen [Y/n]?"
-read p
-p=${p:-"y"}
-if [ "$p" == "y" -o "$p" == "Y" ]; then
-  adds="${adds} react-native-smart-splash-screen"
-  cp -R $DIR/templates/res android/app/src/main
-  echo "Para concluir a instalação siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
-fi
-
 echo "Deseja instalar o React Native Keyboard Aware ScrollView [Y/n]?"
 read p
 p=${p:-"y"}
@@ -117,13 +101,12 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-keyboard-aware-scroll-view"
 fi
 
-echo "Deseja instalar o React Native Global Props [Y/n]?"
-read p
-p=${p:-"y"}
-if [ "$p" == "y" -o "$p" == "Y" ]; then
-  adds="${adds} react-native-global-props"
-fi
-
+adds="${adds} react-native-smart-splash-screen"
+cp -R $DIR/templates/res android/app/src/main
+adds="${adds} react-navigation"
+cp $DIR/templates/router.js App/router.js
+adds="${adds} react-native-global-props"
 yarn add $adds
 react-native link
+echo "Para concluir a instalação do React Native Smart Splash Screen siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
 echo "Projeto criado e configurado com sucesso! Happy Coding!"
