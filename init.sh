@@ -8,18 +8,19 @@ fi
 
 echo "Criando projeto... Aguarde alguns instantes."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-react-native init $1 &&
-cd $1 &&
+react-native init $1
+cd $1
+nohup yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native &
 echo "Criando diretórios... Isso será bem rápido."
-mkdir App &&  
-mkdir App/components && 
-mkdir App/config && 
-mkdir App/screens && 
-mkdir App/containers && 
-mkdir App/utils && 
-mkdir App/assets && 
-mkdir App/assets/img &&
-mv App.js App/App.js &&
+mkdir App
+mkdir App/components 
+mkdir App/config 
+mkdir App/screens 
+mkdir App/containers 
+mkdir App/utils 
+mkdir App/assets
+mkdir App/assets/img
+mv App.js App/App.js
 cp -R $DIR/templates/components App
 cp -R $DIR/templates/containers App
 cp -R $DIR/templates/config App
@@ -27,7 +28,6 @@ cp -R $DIR/templates/screens App
 cp -R $DIR/templates/utils App
 cp $DIR/templates/index.js App/index.js
 
-nohup yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native &
 
 cp $DIR/templates/.eslintrc.json .
 cp $DIR/templates/.editorconfig .
