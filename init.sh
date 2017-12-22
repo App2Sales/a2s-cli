@@ -106,6 +106,7 @@ read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-smart-splash-screen"
+  cp -R $DIR/templates/res android/app/src/main
   echo "Para concluir a instalação siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
 fi
 
