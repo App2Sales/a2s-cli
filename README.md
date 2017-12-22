@@ -7,13 +7,13 @@ Script para criar novos projetos em React-Native.
 Clone o projeto: 
 
 ```Shell
-git clone https://github.com/App2Sales/bootstrapreactnative
+git clone https://github.com/App2Sales/a2s-cli
 ``` 
 
 Execute o script: 
 
 ```Shell
-bash /<path_to_scrip>/bootstrapreactnative/reactNativeBootstrap.sh <option> <NAME>
+bash /<path_to_scrip>/a2s-cli/reactNativeBootstrap.sh <option> <NAME>
 ``` 
 
 |Parâmetro|Descrição|Requerido|
