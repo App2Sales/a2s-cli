@@ -10,7 +10,10 @@ echo "Criando projeto... Aguarde alguns instantes."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 react-native init $1
 cd $1
-nohup yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native &
+sed -i "/\"scripts\": {/a\    \"postinstall\": \"rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit\"," package.json
+sed -i "/\"scripts\": {/a\    \"prepush\": \"yarn run lint\"," package.json
+sed -i "/\"scripts\": {/a\    \"lint\": \"eslint app/\"," package.json
+nohup yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native husky &
 echo "Criando diretórios... Isso será bem rápido."
 mkdir App
 mkdir App/components 
