@@ -26,7 +26,14 @@ cp -R $DIR/templates/config App
 cp -R $DIR/templates/screens App
 cp -R $DIR/templates/utils App
 cp $DIR/templates/index.js App/index.js
+
+yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native &
+
+cp $DIR/templates/.eslintrc.json .
+cp $DIR/templates/.editorconfig .
 echo "Vamos adicionar alguns complementos? Veja a seguir o que deseja instalar."
+
+adds=""
 
 echo "Deseja instalar o redux [Y/n]?"
 read p
@@ -39,7 +46,7 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
     read p
     p=${p:-"y"}
     if [ "$p" == "y" -o "$p" == "Y" ]; then
-      yarn add reduxsauce seamless-immutable
+      adds="${adds} reduxsauce seamless-immutable"
     fi
 fi
 
@@ -47,28 +54,28 @@ echo "Deseja instalar o moment [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add moment
+  adds="${adds} moment"
 fi
 
 echo "Deseja instalar o lazy.js [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add lazy.js
+  adds="${adds} lazy.js"
 fi
 
 echo "Deseja instalar o lodash [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add lodash
+  adds="${adds} lodash"
 fi
 
 echo "Deseja instalar o React Navigation [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add react-navigation
+  adds="${adds} react-navigation"
   cp $DIR/templates/router.js App/router.js
 fi
 
@@ -76,8 +83,7 @@ echo "Deseja instalar o React Native Firebase [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add react-native-firebase
-  react-native link react-native-firebase
+  adds="${adds} react-native-firebase"
   echo "Para concluir a instalação siga as instruções em: https://rnfirebase.io/docs/v3.0.*/installation/initial-setup"
 fi
 
@@ -85,33 +91,21 @@ echo "Deseja instalar o Realm [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add realm
-  react-native link realm
+  adds="${adds} realm"
 fi
 
 echo "Deseja instalar o React Native Vector Icons [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add react-native-vector-icons
-  react-native link react-native-vector-icons
-fi
-
-echo "Deseja adicionar ESLint no projeto? [Y/n]?"
-read p
-p=${p:-"y"}
-if [ "$p" == "y" -o "$p" == "Y" ]; then
-yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native
-cp $DIR/templates/.eslintrc.json .
-cp $DIR/templates/.editorconfig .
+  adds="${adds} react-native-vector-icons"
 fi
 
 echo "Deseja instalar o React Native Smart Splash Screen [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add react-native-smart-splash-screen
-  react-native link react-native-smart-splash-screen
+  adds="${adds} react-native-smart-splash-screen"
   echo "Para concluir a instalação siga as instruções em: https://github.com/react-native-component/react-native-smart-splash-screen"
 fi
 
@@ -119,7 +113,9 @@ echo "Deseja instalar o React Native Keyboard Aware ScrollView [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add react-native-keyboard-aware-scroll-view
+  adds="${adds} react-native-keyboard-aware-scroll-view"
 fi
 
+yarn add $adds
+react-native link
 echo "Projeto criado e configurado com sucesso! Happy Coding!"
