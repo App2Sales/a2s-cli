@@ -14,7 +14,7 @@ const customTextInputProps = {
     style: {
         height: 45
     }
-}
+};
 
 setCustomText(customTextProps);
 setCustomTextInput(customTextInputProps);
