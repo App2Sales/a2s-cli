@@ -8,8 +8,10 @@ fi
 
 echo "Criando projeto... Aguarde alguns instantes."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-react-native init $1
-cd $1
+PROJECT=$1
+project=${PROJECT,,}
+react-native init $PROJECT
+cd $PROJECT
 sed -i "/\"scripts\": {/a\    \"postinstall\": \"rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit\"," package.json
 sed -i "/\"scripts\": {/a\    \"prepush\": \"yarn run lint\"," package.json
 sed -i "/\"scripts\": {/a\    \"lint\": \"eslint App/\"," package.json
@@ -103,12 +105,27 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-keyboard-aware-scroll-view"
 fi
 
+echo "Deseja configurar FastLane para esse projeto [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  # Copy Fastlane files from Android and iOS
+  cp -R $DIR/templates/fastlane/android/fastlane android
+  cp -R $DIR/templates/fastlane/ios/fastlane ios
+  # Rename bundle name on files
+  sed -i "s/template/$project/g" android/fastlane/Appfile
+  sed -i "s/template/$project/g" ios/fastlane/Appfile
+  sed -i "s/template/$project/g" ios/fastlane/Deliverfile
+  sed -i "s/template/$project/g" ios/fastlane/Fastfile
+  sed -i "s/template/$project/g" ios/fastlane/Matchfile
+  echo "Não se esqueça de remover o comentário no scheme do FastFile do iOS. ;)"
+fi
+
 adds="${adds} react-native-smart-splash-screen"
 cp -R $DIR/templates/res android/app/src/main
-dir=${1,,}
 onCreate="\ @Override\n\tprotected void onCreate(Bundle savedInstanceState) {\n\t\tRCTSplashScreen.openSplashScreen(this);   //open splashscreen\n\t\tsuper.onCreate(savedInstanceState);\n\t}"
-sed -i "/package com.${dir};/aimport android.os.Bundle;\nimport com.reactnativecomponent.splashscreen.RCTSplashScreen;" android/app/src/main/java/com/$dir/MainActivity.java
-sed -i "/public class MainActivity extends ReactActivity {/a${onCreate}" android/app/src/main/java/com/$dir/MainActivity.java
+sed -i "/package com.${project};/aimport android.os.Bundle;\nimport com.reactnativecomponent.splashscreen.RCTSplashScreen;" android/app/src/main/java/com/$project/MainActivity.java
+sed -i "/public class MainActivity extends ReactActivity {/a${onCreate}" android/app/src/main/java/com/$project/MainActivity.java
 sed -i "/<\/style>/i\   <item name=\"android:windowIsTranslucent\">true</item>" android/app/src/main/res/values/styles.xml
 
 adds="${adds} react-navigation"

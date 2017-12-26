@@ -1,0 +1,49 @@
+# Customize this file, documentation can be found here:
+# https://docs.fastlane.tools/actions/
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.65.0"
+
+default_platform :android
+
+platform :android do
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :alpha do
+
+    sh "cd .. && rsync -avhP ./android-licenses/ \"$ANDROID_HOME/licenses/\""
+    sh "cd ../.. && yarn install"
+    
+    # Verion bump
+    versionCode = number_of_commits.to_s
+
+
+    path = '../app/build.gradle'
+    re = /versionCode\s+(\d+)/
+    s = File.read(path)
+    s[re, 1] = versionCode
+  
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
+    # End of - Version bump
+
+    gradle(task: "assembleRelease")
+    supply(track:'alpha')
+  end  
+  # You can define as many lanes as you want
+end
+
+# More information about multiple platforms in fastlane: https://docs.fastlane.tools/advanced/#control-configuration-by-lane-and-by-platform
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded.
+# Learn more at https://docs.fastlane.tools/#metrics

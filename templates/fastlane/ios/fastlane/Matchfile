@@ -1,0 +1,6 @@
+git_url "https://samuelbb:A2czf171uxn2a9@bitbucket.org/samuelbb/ios-certificates-ailton-account.git"
+
+type "appstore" # The default type, can be: appstore, adhoc or development
+
+app_identifier "com.template"
+username "ailton.fabri@kyriostecnologia.com"
