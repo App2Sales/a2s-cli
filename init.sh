@@ -111,6 +111,7 @@ p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
   # Copy Fastlane files from Android and iOS
   cp -R $DIR/templates/fastlane/android/fastlane android
+  cp -R $DIR/templates/fastlane/android/android-licenses android
   cp -R $DIR/templates/fastlane/ios/fastlane ios
   # Rename bundle name on files
   sed -i "s/template/$project/g" android/fastlane/Appfile
