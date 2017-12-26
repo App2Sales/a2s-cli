@@ -105,6 +105,12 @@ fi
 
 adds="${adds} react-native-smart-splash-screen"
 cp -R $DIR/templates/res android/app/src/main
+dir=${1,,}
+onCreate="\ @Override\n\tprotected void onCreate(Bundle savedInstanceState) {\n\t\tRCTSplashScreen.openSplashScreen(this);   //open splashscreen\n\t\tsuper.onCreate(savedInstanceState);\n\t}"
+sed -i "/package com.${dir};/aimport android.os.Bundle;\nimport com.reactnativecomponent.splashscreen.RCTSplashScreen;" android/app/src/main/java/com/$dir/MainActivity.java
+sed -i "/public class MainActivity extends ReactActivity {/a${onCreate}" android/app/src/main/java/com/$dir/MainActivity.java
+sed -i "/<\/style>/i\   <item name=\"android:windowIsTranslucent\">true</item>" android/app/src/main/res/values/styles.xml
+
 adds="${adds} react-navigation"
 cp $DIR/templates/router.js App/router.js
 adds="${adds} react-native-global-props"
