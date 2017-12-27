@@ -1,4 +1,4 @@
-import { colors } from '../../config'
+import { colors } from '../../config';
 
 const styles = {
     container: {
@@ -6,6 +6,11 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.backgroundScreens
+    },
+    icon: {
+        height: 30,
+        width: 30,
+        resizeMode: 'contain'
     }
 };
 

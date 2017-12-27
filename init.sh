@@ -31,6 +31,7 @@ cp -R $DIR/templates/containers App
 cp -R $DIR/templates/config App
 cp -R $DIR/templates/screens App
 cp -R $DIR/templates/utils App
+cp -R $DIR/templates/assets App
 cp $DIR/templates/index.js App/index.js
 
 

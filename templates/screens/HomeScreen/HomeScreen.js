@@ -1,11 +1,18 @@
 // import liraries
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import SplashScreen from 'react-native-smart-splash-screen';
 import styles from './style';
+import { images } from '../../config';
 
 // create a component
 class HomeScreen extends Component {
+    static navigationOptions = () => ({
+        title: 'HomeScreen',
+        tabBarIcon: ({ tintColor }) =>
+            (<Image source={images.homeIcon} style={[styles.icon, { tintColor }]} />)
+    });
+
     componentDidMount() {
         SplashScreen.close({
             animationType: SplashScreen.animationType.scale,
