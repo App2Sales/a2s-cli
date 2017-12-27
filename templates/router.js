@@ -7,7 +7,7 @@ import { colors } from './config';
 const MainTabNavigator = TabNavigator(
     {
         // place yours tabs here
-        // sample: 
+        // sample:
         HOME: { screen: HomeScreen }
     },
     {
