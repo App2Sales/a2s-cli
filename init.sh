@@ -44,7 +44,7 @@ echo "Deseja instalar o redux [Y/n]?"
 read p
 p=${p:-"y"}
 if [ "$p" == "y" -o "$p" == "Y" ]; then
-  yarn add redux react-redux redux-logger 
+  adds="${adds} redux react-redux redux-logger"
   mkdir App/redux
   cp $DIR/templates/redux/index.js App/redux/index.js
   echo "Deseja instalar o reduxsauce [Y/n]?"
