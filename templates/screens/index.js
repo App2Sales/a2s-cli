@@ -1,5 +1,5 @@
 import HomeScreen from './HomeScreen';
 
-export default {
+export {
     HomeScreen
 };

@@ -16,8 +16,8 @@ const MainTabNavigator = TabNavigator(
         tabBarOptions: {
             showIcon: true,
             showLabel: true,
-            activeTintColor: colors.activeColor, // TODO: change to correct color
-            inactiveTintColor: colors.inactiveColor, // TODO: change to correct color
+            activeTintColor: colors.primary, // TODO: change to correct color
+            inactiveTintColor: colors.secondary, // TODO: change to correct color
             upperCaseLabel: false,
             tabStyle: {
                 elevation: 10
@@ -32,7 +32,7 @@ const MainTabNavigator = TabNavigator(
                 borderTopColor: colors.tabBorderColor
             },
             indicatorStyle: {
-                borderColor: colors.activeColor, // TODO: change to correct color
+                borderColor: colors.primary, // TODO: change to correct color
                 borderWidth: 2,
                 top: 0,
                 position: 'absolute'
