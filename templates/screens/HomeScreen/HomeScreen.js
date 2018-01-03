@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import SplashScreen from 'react-native-smart-splash-screen';
-import styles from './style';
+import styles from './styles';
 import { images } from '../../config';
 
 // create a component
