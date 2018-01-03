@@ -89,6 +89,14 @@ if [ "$p" == "y" -o "$p" == "Y" ]; then
   adds="${adds} react-native-keyboard-aware-scroll-view"
 fi
 
+# KEYBOARD AWARE SCROLLVIEW
+echo "Deseja instalar o Validator JS [Y/n]?"
+read p
+p=${p:-"y"}
+if [ "$p" == "y" -o "$p" == "Y" ]; then
+  adds="${adds} validator"
+fi
+
 # FASTLANE
 echo "Deseja configurar FastLane para esse projeto [Y/n]?"
 read fastlane
