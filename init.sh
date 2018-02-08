@@ -16,6 +16,14 @@ adds=""
 echo "Veja a seguir quais complementos deseja instalar."
 echo ""
 
+# A2S FEEDBACK SYSTEM
+echo "Deseja instalar o A2S Feedback System [Y/n]?"
+read hasFeedback
+hasFeedback=${hasFeedback:-"y"}
+if [ "$hasFeedback" == "y" -o "$hasFeedback" == "Y" ]; then
+  adds="${adds} apisauce react-native-device-info"
+fi
+
 # REDUX
 echo "Deseja instalar o redux [Y/n]?"
 read redux
@@ -150,6 +158,13 @@ cp $DIR/templates/index.js App/index.js
 cp $DIR/templates/router.js App/router.js
 cp $DIR/templates/.eslintrc.json .
 cp $DIR/templates/.editorconfig .
+
+# Adicionando App2Sales
+if [ "$hasFeedback" == "y" -o "$hasFeedback" == "Y" ]; then
+  cp -R $DIR/templates/App2SalesFeedback App/components    
+  sed -i "1 i\import App2SalesFeedback from './App2SalesFeedback';" App/components/index.js
+  sed -i "/\export {/a\    App2SalesFeedback," App/components/index.js
+fi
 
 
 # Copiando arquivos condicionais, baseados nas opções coletadas anteriormente
