@@ -43,7 +43,7 @@ class App2SalesFeedback extends Component {
     }
 
     componentWillMount() {
-        feedback.setProject(this.props.project);
+        feedback.setProject(this.props.project, this.props.baseUrl);
     }
 
     componentDidMount() {

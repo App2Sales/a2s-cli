@@ -16,28 +16,26 @@ const deviceInfo = {
     isEmulator: DeviceInfo.isEmulator(),
     isTablet: DeviceInfo.isTablet()
 };
-
-const BASE_URL = 'https://us-central1-app2sales-feedback-system.cloudfunctions.net';
-
-const api = create({
-    baseURL: BASE_URL,
-    headers: {
-        'Content-Type': 'application/json'
-    }
-});
-
 class Feedback {
     constructor() {
         this.project = '';
         this.projectRef = null;
+        this.api = null;
     }
 
-    setProject(project) {
+    setProject(project, baseUrl) {
         this.project = project;
+        this.baseURL = baseUrl;
+        this.api = create({
+            baseURL: baseUrl,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
     }
 
     getChangeLog = () =>
-        api.get(`/changeLog?project=${this.project}`)
+        this.api.get(`/changeLog?project=${this.project}`)
             .then((response) => {
                 if (response.ok) {
                     return response.data;
@@ -46,7 +44,7 @@ class Feedback {
             });
 
     getSubjects = () =>
-        api.get(`/subjects?project=${this.project}`)
+        this.api.get(`/subjects?project=${this.project}`)
             .then((response) => {
                 if (response.ok) {
                     return response.data;
@@ -55,7 +53,7 @@ class Feedback {
             });
 
     getFeedbackEnabled = () =>
-        api.get(`/feedbackEnabled?project=${this.project}`)
+        this.api.get(`/feedbackEnabled?project=${this.project}`)
             .then((response) => {
                 if (response.ok) {
                     return response.data;
@@ -72,7 +70,7 @@ class Feedback {
             deviceInfo,
             project: this.project
         };
-        return api.post('/feedback', data);
+        return this.api.post('/feedback', data);
     }
 }
 
