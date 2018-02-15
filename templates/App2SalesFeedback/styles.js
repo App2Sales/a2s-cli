@@ -14,11 +14,11 @@ const styles = {
     formContainer: {
         backgroundColor: '#FFF',
         borderRadius: 10,
-        padding: 40,
         width: '100%'
     },
     optionsModal: {
-        paddingHorizontal: 0
+        paddingHorizontal: 0,
+        paddingVertical: 40
     },
     ratingContainer: {
         backgroundColor: '#FFF',
@@ -29,6 +29,9 @@ const styles = {
     },
     fields: {
         flexDirection: 'column'
+    },
+    fieldsContainer: {
+        padding: 40
     },
     selectContainer: {
         borderColor: '#E5E5E5',
@@ -136,12 +139,14 @@ const styles = {
         textAlign: 'center',
         marginTop: 20
     },
+    lastButtonContainer: {
+        marginTop: 20
+    },
     lastButton: {
         backgroundColor: '#4707FF',
         paddingHorizontal: 30,
         paddingVertical: 10,
-        borderRadius: 25,
-        marginTop: 20
+        borderRadius: 25
     },
     lastButtonText: {
         color: '#FFFFFF'

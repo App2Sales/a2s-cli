@@ -228,7 +228,9 @@ class App2SalesFeedback extends Component {
             <Text style={styles.lastMessage} >
                 Recebemos seu feedback e ele está em análise.
             </Text>
-            <TouchableOpacity onPress={this.closeFeedBack} >
+            <TouchableOpacity
+                style={styles.lastButtonContainer}
+                onPress={this.closeFeedBack} >
                 <View style={styles.lastButton} >
                     <Text style={styles.lastButtonText}>Entendi!</Text>
                 </View>
@@ -244,7 +246,9 @@ class App2SalesFeedback extends Component {
             </View>
             <View style={styles.buttonsContainer}>
                 <TouchableOpacity onPress={() => this.sendReport()}>
-                    <Text style={styles.sendButton}>ENVIAR</Text>
+                    <View style={styles.button} >
+                        <Text style={styles.sendButton}>ENVIAR</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
         </View>
@@ -253,35 +257,40 @@ class App2SalesFeedback extends Component {
     renderFeedbackForm = () => (
         <View style={styles.formContainer}>
             <View style={styles.fields}>
-                <Text style={styles.title}>
-                    {this.props.feedbackFormTitle}
-                </Text>
-                <TouchableOpacity onPress={() => this.setState({
-                    showSubjectOptions: true,
-                    showFeedbackForm: false
-                })}>
-                    <View style={styles.selectContainer}>
-                        <Text style={styles.selectText}>{this.state.subjectText}</Text>
-                        <View style={styles.selectedDropIcon} />
+                <View style={styles.fieldsContainer} >
+                    <Text style={styles.title}>
+                        {this.props.feedbackFormTitle}
+                    </Text>
+                    <TouchableOpacity onPress={() => this.setState({
+                        showSubjectOptions: true,
+                        showFeedbackForm: false
+                    })}>
+                        <View style={styles.selectContainer}>
+                            <Text style={styles.selectText}>{this.state.subjectText}</Text>
+                            <View style={styles.selectedDropIcon} />
+                        </View>
+                    </TouchableOpacity>
+                    <TextInput
+                        multiline
+                        textAlignVertical={'top'}
+                        numberOfLines={3}
+                        underlineColorAndroid={'transparent'}
+                        style={styles.textArea}
+                        onChangeText={text => this.setState({ comment: text })}
+                        value={this.state.comment}
+                        placeholder={this.props.commentPlaceholder} />
+                    <View style={styles.buttonsContainer}>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={this.props.onCancel}>
+                            <Text style={styles.cancelButton}>CANCELAR</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => this.validate()} >
+                            <Text style={styles.sendButton}>ENVIAR</Text>
+                        </TouchableOpacity>
                     </View>
-                </TouchableOpacity>
-                <TextInput
-                    multiline
-                    textAlignVertical={'top'}
-                    numberOfLines={3}
-                    underlineColorAndroid={'transparent'}
-                    style={styles.textArea}
-                    onChangeText={text => this.setState({ comment: text })}
-                    value={this.state.comment}
-                    placeholder={this.props.commentPlaceholder} />
-                <View style={styles.buttonsContainer}>
-                    <TouchableOpacity onPress={this.props.onCancel}>
-                        <Text style={styles.cancelButton}>CANCELAR</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => this.validate()} >
-                        <Text style={styles.sendButton}>ENVIAR</Text>
-                    </TouchableOpacity>
                 </View>
             </View>
         </View>
