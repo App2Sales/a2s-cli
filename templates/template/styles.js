@@ -1,5 +1,4 @@
-import colors from '../../config/colors';
-import { globalStyles } from '../config';
+import { colors, globalStyles } from '../../config';
 
 const styles = {
     ...globalStyles,
