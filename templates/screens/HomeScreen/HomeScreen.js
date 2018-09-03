@@ -1,4 +1,4 @@
-// import liraries
+// import libraries
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import SplashScreen from 'react-native-smart-splash-screen';
