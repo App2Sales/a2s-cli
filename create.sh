@@ -13,10 +13,15 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mkdir App/$1/$2
 cd App/$1/$2
-cp $DIR/templates/template/template.js .
+if [ "$1" = "components" ]; then
+    cp $DIR/templates/template/templateConst.js .
+    mv templateConst.js $2.js
+else
+    cp $DIR/templates/template/template.js .
+    mv template.js $2.js
+fi
 cp $DIR/templates/template/index.js .
 cp $DIR/templates/template/styles.js .
-mv template.js $2.js
 sed -i "s/template/$2/g" $2.js 
 sed -i "s/template/$2/g" index.js
 cd ../
