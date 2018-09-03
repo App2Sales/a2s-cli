@@ -189,7 +189,7 @@ if [ "$redux" == "y" -o "$redux" == "Y" ]; then
 fi
 
 # Instalando pacotes adicionais
-adds="${adds} react-native-global-props react-native-smart-splash-screen react-navigation"
+adds="${adds} react-native-smart-splash-screen react-navigation"
 yarn add --dev babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-native husky
 yarn add $adds
 
